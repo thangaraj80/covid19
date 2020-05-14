@@ -60,6 +60,8 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/",
+               "deployUrl": "https://thangaraj80.github.io/covid19/a",
               "browserTarget": "material-dashboard-angular:build:production"
             }
           }
