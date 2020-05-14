@@ -9,6 +9,7 @@ import { CoronaAllCountries } from "app/classes/corona-all-countries";
 })
 export class TableListComponent implements OnInit {
   allCountries: CoronaAllCountries[];
+  lastUpdate: Date;
 
   constructor(public coronaNews: CoronaApiService) { }
 

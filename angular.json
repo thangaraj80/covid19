@@ -105,9 +105,9 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://shahin4u000.github.io/corona/",
-            "name": "Kazi Ataul Goni ",
-            "email": "Kazi.shahinbd@gmail.com"
+            "baseHref": "https://github.com/thangaraj80/covid19",
+            "name": "Thangaraj ",
+            "email": "thangaraj.thangaraj2@gmail.com"
           }
         }
       }
