@@ -11,7 +11,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
@@ -61,7 +61,7 @@
           "configurations": {
             "production": {
               "baseHref": "/",
-               "deployUrl": "https://thangaraj80.github.io/covid19/a",
+               "deployUrl": "https://thangaraj80.github.io/covid19/",
               "browserTarget": "material-dashboard-angular:build:production"
             }
           }
