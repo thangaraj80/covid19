@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-dashboard-angular": {
+    "covid19": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -56,20 +56,20 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "covid19:build"
           },
           "configurations": {
             "production": {
               "baseHref": "/",
                "deployUrl": "https://thangaraj80.github.io/covid19/",
-              "browserTarget": "material-dashboard-angular:build:production"
+              "browserTarget": "covid19:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-dashboard-angular:build"
+            "browserTarget": "covid19:build"
           }
         },
         "test": {
@@ -114,7 +114,7 @@
         }
       }
     },
-    "material-dashboard-angular-e2e": {
+    "covid19-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -123,7 +123,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "material-dashboard-angular:serve"
+            "devServerTarget": "covid19:serve"
           }
         },
         "lint": {
@@ -136,7 +136,7 @@
       }
     }
   },
-  "defaultProject": "material-dashboard-angular",
+  "defaultProject": "covid19",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
