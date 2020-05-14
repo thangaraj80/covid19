@@ -34,6 +34,7 @@ export class CoronaApiService {
   }
 
   public coronaHistory(): Observable<any> {
+    // return this.httpClient.get(this.covid19 + "api/countries/India").pipe(
     return this.httpClient.get(this.covid19 + "api/daily").pipe(
       map((arr: any)=> {
         return arr.map(sub => {

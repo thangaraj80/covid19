@@ -19,8 +19,9 @@ export class TableListComponent implements OnInit {
   getAllCountries() {
     this.coronaNews.coronaAllCountries().subscribe((results:any[]) => {
       this.allCountries= results.sort((a, b) => b.cases - a.cases)
-    })
-    
+      this.lastUpdate = this.allCountries[0].updated
 
+    })
+   
   }
 }

@@ -28,10 +28,11 @@
                         <td>{{ country.country }}</td>
                         <td class="table-warning">{{ country.cases }}</td>
                         <td class="table-danger">
-                          <h4>{{ country.deaths }}</h4>
+                          {{ country.deaths }}
                         </td>
                         <td>{{ country.todayCases }}</td>
                         <td>{{ country.recovered }}</td>
+                        <td class="table-Active">{{ country.updated | date }}</td>
                         <!-- <td class="table-Active">{{ country.active }}</td> -->
                         <!-- <td>{{ country.critical }} </td> -->
         

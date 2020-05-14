@@ -8,4 +8,5 @@ export interface CoronaAllCountries {
     "active": number;
     "critical": number;
     "casesPerOneMillion": number;
+    "updated": Date;
 }

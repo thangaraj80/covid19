@@ -32,7 +32,7 @@ import { CountryViewComponent } from './country-view/country-view.component';
     PlottingModule,
     
     AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
+      apiKey: 'AIzaSyAL-GQsV9DJoquuWwAeqf6zk9ucDnwUCHA'
     })
   ],
   declarations: [
