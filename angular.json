@@ -21,7 +21,8 @@
               "node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "src/assets/scss/material-dashboard.scss",
               "src/assets/css/demo.css",
-              "src/assets/js/jvm/jquery-jvectormap.css"
+              "src/assets/js/jvm/jquery-jvectormap.css",
+              "src/assets/css/dataTables.bootstrap4.min.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
@@ -33,7 +34,11 @@
               "node_modules/bootstrap-notify/bootstrap-notify.js",
               "node_modules/chartist/dist/chartist.js",
              "src/assets/js/jvm/jquery-jvectormap.js",
-             "src/assets/js/jvm/jquery-jvectormap-world-mill.js"
+             "src/assets/js/jvm/jquery-jvectormap-world-mill.js",
+             "src/assets/js/datatable/jquery.dataTables.min.js",
+             "src/assets/js/datatable/dataTables.bootstrap4.min.js"
+             
+
             ]
           },
           "configurations": {
