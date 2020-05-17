@@ -21,7 +21,7 @@ export class LineChartComponent implements OnInit {
   constructor() {}
   ngOnInit() {
     this.data1 = this.infectedHistory;
-    console.log("BarChartComponent -> ngOnInit -> this.data1 ", this.data1 )
+  //   console.log("BarChartComponent -> ngOnInit -> this.data1 ", this.data1 )
     this.data2 = this.deathHistory
     this.history.forEach(each => {
       //this.data1.push(each.totalConfirmed);

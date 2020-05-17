@@ -48,7 +48,7 @@
         overflow: auto;
         width: 260px;
         z-index: 4;
-
+      background-color: #ff6f61;
         padding-bottom: 30px;
 
         .dropdown .dropdown-backdrop{
@@ -198,7 +198,7 @@
             line-height: 30px;
             width: 30px;
             text-align: center;
-            color: #a9afbb;
+            color: #0F4C81;
         }
     }
 
@@ -206,7 +206,7 @@
     .nav li .dropdown-menu a{
           margin: 10px 15px 0;
           border-radius: $border-radius-base;
-          color: $black-color;
+          color: $white;
           padding-left: 10px;
           padding-right: 10px;
           text-transform: capitalize;
@@ -244,6 +244,7 @@
         display: block;
         position: relative;
         z-index: 4;
+        background-color: #ff6f61;
 
         &:after{
             content: '';
@@ -252,7 +253,7 @@
             right: 15px;
             height: 1px;
             width: calc(100% - 30px);
-            background-color: rgba(180,180,180, .3);
+            background-color:#fff;
 
         }
 
@@ -269,9 +270,9 @@
             padding: $padding-small-vertical $padding-zero;
             display: inline-block;
             font-size: 18px;
-            color: $black-color;
+            color: $white;
             white-space: nowrap;
-            font-weight: $font-weight-default;
+            font-weight: bold;
             line-height: 30px;
             overflow: hidden;
             text-align: center;

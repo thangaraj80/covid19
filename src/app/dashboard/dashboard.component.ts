@@ -4,7 +4,7 @@ import { CoronaApiService } from "./../corona-api.service";
 import { Component, OnInit } from "@angular/core";
 import * as Chartist from "chartist";
 import { Observable } from "rxjs";
-
+declare const jQuery: any;
 
 @Component({
   selector: "app-dashboard",

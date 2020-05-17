@@ -14,6 +14,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { CoronaModule } from "app/corona/corona.module";
+import { VectorMapsComponent } from "app/vectormaps/vectormaps.component";
+
 
 @NgModule({
   imports: [
@@ -30,6 +32,6 @@ import { CoronaModule } from "app/corona/corona.module";
     PlottingModule,
     CoronaModule
   ],
-  declarations: [DashboardComponent, TableListComponent, MapsComponent]
+  declarations: [DashboardComponent, TableListComponent, MapsComponent, VectorMapsComponent]
 })
 export class AdminLayoutModule {}

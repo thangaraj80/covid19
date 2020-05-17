@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",    
-   "deploy": "ng build --prod --base-href=https://thangaraj80.github.io/covid19/ && angular-cli-ghpages --branch gh-pages"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && ng serve -o",
+    "deploy": "ng build --prod --base-href=https://thangaraj80.github.io/covid19/ && angular-cli-ghpages --branch gh-pages"
   },
   "engines": {
     "node": "6.11.1",
@@ -49,6 +49,7 @@
     "googleapis": "40.0.0",
     "hammerjs": "2.0.8",
     "jquery": "3.4.1",
+    "jvectormap-next": "^3.1.1",
     "moment": "2.24.0",
     "ngx-echarts": "^4.2.2",
     "perfect-scrollbar": "1.1.0",
