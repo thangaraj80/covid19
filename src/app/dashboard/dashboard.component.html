@@ -26,7 +26,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">code</i> Message
+                        <i class="material-icons">code</i> Latest Messages
                         <div class="ripple-container"></div>
                       </a>
                     </li>
@@ -54,9 +54,8 @@
                             </label>
                           </div>
                         </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain
-                          swept
-                          through metro Detroit
+                        <td>Time: {{lastAffectedTimeStamp}}
+                          <!-- {{lastAffected | json}} -->
                         </td>
                         <td class="td-actions text-right">
                           <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
@@ -78,7 +77,9 @@
                             </label>
                           </div>
                         </td>
-                        <td>Sign contract for "What are conference organizers afraid of?"</td>
+                        <td>Country: {{lastAffected.country | json}}
+                          <!-- {{lastAffected | json}} -->
+                        </td>
                         <td class="td-actions text-right">
                           <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
                             <i class="material-icons">edit</i>

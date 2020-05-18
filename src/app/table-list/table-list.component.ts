@@ -3,6 +3,7 @@ import { CoronaApiService } from "./../corona-api.service";
 import { CoronaAllCountries } from "app/classes/corona-all-countries";
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
+
 declare const $: any;
 
 @Component({
@@ -51,6 +52,10 @@ export class TableListComponent implements OnInit {
         this.lastUpdate = this.allCountries[0].updated
         this.rows = results
         this.temp = [...this.rows];
+
+        // function getMaxY() {
+        //   return data.reduce((max, p) => p.y > max ? p.y : max, data[0].y);
+        // }
       },
       err => {
         console.error('Observer got an error: ' + err
@@ -64,8 +69,6 @@ export class TableListComponent implements OnInit {
           { prop: 'recovered', name: 'Recovered' },
           { prop: 'critical', name: 'Critical' },
           { prop: 'deaths', name: 'Deaths' },
-
-
         ];
 
       }
