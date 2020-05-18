@@ -1,8 +1,5 @@
-.my-custom-scrollbar {
-position: relative;
-height:350px;
-overflow: auto;
-}
-.table-wrapper-scroll-y {
-display: block;
+ngx-datatable.bootstrap .datatable-footer {
+    background: #fea321;
+    color: #ffffff;
+    margin-top: -1px;
 }

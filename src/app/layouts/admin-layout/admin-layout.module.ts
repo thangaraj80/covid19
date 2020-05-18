@@ -15,6 +15,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
 import { CoronaModule } from "app/corona/corona.module";
 import { VectorMapsComponent } from "app/vectormaps/vectormaps.component";
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { VectorMapsComponent } from "app/vectormaps/vectormaps.component";
     MatSelectModule,
     MatTooltipModule,
     PlottingModule,
-    CoronaModule
+    CoronaModule,
+    NgxDatatableModule
   ],
   declarations: [DashboardComponent, TableListComponent, MapsComponent, VectorMapsComponent]
 })

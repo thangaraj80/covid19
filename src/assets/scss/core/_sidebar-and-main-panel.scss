@@ -376,11 +376,25 @@
     @include transition (0.33s, cubic-bezier(0.685, 0.0473, 0.346, 1));
 
      .main-content{
-        margin-top: 70px;
+        /* margin-top: 70px;*/
         padding: 30px 15px;
         min-height: calc(100vh - 123px);
     }
+.ngx-datatable.bootstrap .datatable-header {
+    background:rgb(255, 164, 34, 0.2);
+    color: #000;
+    margin-top: -1px;
+}
+.ngx-datatable.bootstrap .datatable-footer {
+    background: #fb8d01;
+    color: #ffffff;
+    margin-top: -1px;
+}
 
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a, .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+    background-color: #e94541;
+    font-weight: bold;
+}
      .footer{
         border-top: 1px solid #e7e7e7;
     }
