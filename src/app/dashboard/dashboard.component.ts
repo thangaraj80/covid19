@@ -21,7 +21,7 @@ export class DashboardComponent implements OnInit {
   totalDeath: number;
   lastUpdate: Date;
   lastAffected: any
-  lastAffectedTimeStamp: string;
+
 
 
 
@@ -30,11 +30,18 @@ export class DashboardComponent implements OnInit {
   InfectedHistory: any[] = [];
   DeathHistory: any[] = [];
 
+  // Latest News
+  coronaLatestNews
+  latestUpdate
+  latDate
+  latTime
+
   constructor(public coronaNews: CoronaApiService) { }
   ngOnInit(): void {
     this.getAll();
     this.getAllCountries();
     this.getHistory();
+    this.getLatest("India")
   }
 
   getAll() {
@@ -63,7 +70,7 @@ export class DashboardComponent implements OnInit {
         lastTime = moment(maxPeak.updated).unix();
         // console.log(maxPeak);
         this.lastAffected = maxPeak
-        this.lastAffectedTimeStamp = moment.unix(lastTime).format('dddd, MMMM Do, YYYY h:mm:ss A')
+        // this.lastAffectedTimeStamp = moment.unix(lastTime).format('dddd, MMMM Do, YYYY h:mm:ss A')
         //  console.log(moment.unix(lastTime).format('dddd, MMMM Do, YYYY h:mm:ss A'))
       },
       err => {
@@ -95,5 +102,23 @@ export class DashboardComponent implements OnInit {
         this.DeathHistory.push(res.totalDeathPerDay);
       });
     });
+  }
+
+  // Latest Updates
+  getLatest(cou: string) {
+
+    this.coronaNews.coronaHistoryByCountries(cou).subscribe(res => {
+      this.latestUpdate = res
+      var fd = new Date(this.latestUpdate.lastUpdate);
+      var t = fd.toLocaleTimeString();
+      var d = fd.toLocaleDateString();
+      this.latTime = t
+      this.latDate = d
+    })
+  }
+
+  public emitCountry(c: any): void {
+    this.getLatest(c)
+    console.log('Picked Country: ', c);
   }
 }

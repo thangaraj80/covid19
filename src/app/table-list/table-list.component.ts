@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CoronaApiService } from "./../corona-api.service";
 import { CoronaAllCountries } from "app/classes/corona-all-countries";
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
+import { ColumnChangesService } from '@swimlane/ngx-datatable';
+
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 
 declare const $: any;
 
@@ -12,15 +15,19 @@ declare const $: any;
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
+  // @ViewChild('cotable') cotable: any;
   allCountries: CoronaAllCountries[];
   lastUpdate: Date;
   temp: any;
+  selected = [];
 
   @ViewChild('firstTable') cotable: DatatableComponent;
+  @Output() onCountrySelected: EventEmitter<any> = new EventEmitter<any>();
   rows = [];
   columns
-
-  constructor(public coronaNews: CoronaApiService) {
+  ColumnMode = ColumnMode;
+  SelectionType = SelectionType;
+  constructor(public coronaNews: CoronaApiService, private columnChangesService: ColumnChangesService) {
 
 
   }
@@ -32,7 +39,13 @@ export class TableListComponent implements OnInit {
     // change detection 
     // this.rows = [...this.rows];
   }
+
+  triggerColumnChangeDetection(): void {
+    console.log("test")
+    this.columnChangesService.onInputChange();
+  }
   updateFilter(event) {
+    this.triggerColumnChangeDetection()
     const val = event.target.value.toLowerCase();
 
     // filter our data
@@ -83,5 +96,8 @@ export class TableListComponent implements OnInit {
 
     // )
 
+  }
+  onSelect({ selected }) {
+    this.onCountrySelected.emit(selected[0].country);
   }
 }

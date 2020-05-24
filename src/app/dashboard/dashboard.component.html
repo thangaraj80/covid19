@@ -16,17 +16,18 @@
             <div class="card-header card-header-tabs card-header-primary">
               <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                  <span class="nav-tabs-title">Maps:</span>
                   <ul class="nav nav-tabs" data-tabs="tabs">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#profile" data-toggle="tab">
-                        <i class="material-icons">bug_report</i> Affected
+                      <a class="nav-link active" class="btn pull-right mat-raised-button" mat-raised-button=""
+                        href="#profile" data-toggle="tab">
+                        <i class="material-icons">bug_report</i> COVID 19 Worldwide
                         <div class="ripple-container"></div>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">code</i> Latest Messages
+                      <a class="nav-link" class="btn btn-danger pull-right mat-raised-button" mat-raised-button=""
+                        href="#messages" data-toggle="tab">
+                        <i class="material-icons">code</i> Latest Update - {{latestUpdate?.loc}}
                         <div class="ripple-container"></div>
                       </a>
                     </li>
@@ -44,51 +45,34 @@
                   <table class="table">
                     <tbody>
                       <tr>
+
                         <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="" checked>
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+                          <div class="alert alert-danger"><span><b> Date: {{latDate}}, {{this.latTime}}
+                                Country: {{latestUpdate?.loc}}</b> </span>
                           </div>
                         </td>
-                        <td>Time: {{lastAffectedTimeStamp}}
-                          <!-- {{lastAffected | json}} -->
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
+
                       </tr>
                       <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" value="">
-                              <span class="form-check-sign">
-                                <span class="check"></span>
-                              </span>
-                            </label>
+
+                        <td class="major">
+                          <div class="one">
+                            <p id="head">Confirmed</p>
+                            <p>{{latestUpdate?.confirmed.value}}</p>
+                          </div>
+                          <div class="two">
+                            <p id="head">Recovered</p>
+                            <p>{{latestUpdate?.recovered.value}}</p>
+                          </div>
+                          <div class="three">
+                            <p id="head">Death</p>
+                            <p>{{latestUpdate?.deaths.value}}</p>
                           </div>
                         </td>
-                        <td>Country: {{lastAffected.country | json}}
-                          <!-- {{lastAffected | json}} -->
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
-                            <i class="material-icons">edit</i>
-                          </button>
-                          <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                            <i class="material-icons">close</i>
-                          </button>
-                        </td>
+
+
                       </tr>
+
                     </tbody>
                   </table>
                 </div>
@@ -98,7 +82,7 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-12">
-          <app-table-list></app-table-list>
+          <app-table-list (onCountrySelected)="emitCountry($event)"></app-table-list>
         </div>
       </div>
 

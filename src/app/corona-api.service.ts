@@ -12,7 +12,7 @@ export class CoronaApiService {
   rootURL = "https://corona.lmao.ninja/v2/";
   covid19 = "https://covid19.mathdro.id/";
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   public coronaAll(): Observable<CoronaAll> {
     return this.httpClient.get(this.covid19 + "api").pipe(
@@ -36,7 +36,7 @@ export class CoronaApiService {
   public coronaHistory(): Observable<any> {
     // return this.httpClient.get(this.covid19 + "api/countries/India").pipe(
     return this.httpClient.get(this.covid19 + "api/daily").pipe(
-      map((arr: any)=> {
+      map((arr: any) => {
         return arr.map(sub => {
 
           return {
@@ -48,6 +48,24 @@ export class CoronaApiService {
       })
     );
   }
+
+  public coronaHistoryByCountries(country: string): Observable<any> {
+    return this.httpClient.get(this.covid19 + "api/countries/" + country).pipe(
+      // return this.httpClient.get(this.covid19 + "api/daily").pipe(
+      map((arr: any) => {
+        arr["loc"] = country
+        return arr
+        /*  return arr.map(sub => {
+  
+            return {
+              totalConfirmed: sub.totalConfirmed,
+              totalDeathPerDay: sub.deaths.total,
+              dates: sub.reportDate
+            };
+          });*/
+      })
+    );
+  }
 }
 
 /* public coronaAll(): Observable<any> {
@@ -55,7 +73,7 @@ export class CoronaApiService {
 }
 public coronaAllCountries(): Observable<any> {
   return this.httpClient.get(this.rootURL + "countries");
-} 
+}
 
 
 public coronaAllCountries(): Observable<any> {

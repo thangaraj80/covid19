@@ -6,8 +6,11 @@
     </div>
     <div class="card-body table-responsive  ">
         <input type="text" value="" class="form-control" placeholder="Search..." (keyup)="updateFilter($event)">
-        <ngx-datatable #cotable class="bootstrap" [headerHeight]="20" [footerHeight]="50" rowHeight="auto" [rows]="rows"
-            [columns]="columns" [limit]="5">
+        <ngx-datatable #cotable class="bootstrap" [columnMode]="'force'" [headerHeight]="20" [footerHeight]="50"
+            rowHeight="auto" [rows]="rows" [columns]="columns" [limit]="5" [selected]="selected"
+            [selectionType]="SelectionType.single" (select)="onSelect($event)">
         </ngx-datatable>
     </div>
+
+
 </div>
