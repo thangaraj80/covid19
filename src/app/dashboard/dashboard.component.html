@@ -1,0 +1,153 @@
+<div class="progress" *ngIf="condition; else mainDashBoard">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+    aria-valuemin="0" aria-valuemax="100" style="width: 100%; height:5px"></div>
+</div>
+
+<ng-template #mainDashBoard>
+  <div class="main-content">
+    <div class="container-fluid">
+      <!-- general Info -->
+      <corona-general-info [totalInfected]="totalInfected" [totalDeath]="totalDeath" [totalRecovered]="totalRecovered"
+        [lastUpdate]="lastUpdate"></corona-general-info>
+
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="card" style="height: 480px;">
+            <div class="card-header card-header-tabs card-header-primary">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" class="btn btn-info pull-right mat-raised-button" mat-raised-button=""
+                        href="#profile" data-toggle="tab">
+                        <i class="material-icons">bug_report</i> COVID 19 Worldwide
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" class="btn btn-danger pull-right mat-raised-button" mat-raised-button=""
+                        href="#messages" data-toggle="tab">
+                        <i class="material-icons">code</i> Latest Update - {{latestUpdate?.loc}}
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <div class="tab-pane active" id="profile">
+                  <vector-maps-cmp></vector-maps-cmp>
+                </div>
+                <div class="tab-pane" id="messages">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+
+                        <td>
+                          <div class="alert alert-danger"><span><b> Date: {{latDate}}, {{this.latTime}}
+                                Country: {{latestUpdate?.loc}}</b> </span>
+                          </div>
+                        </td>
+
+                      </tr>
+                      <tr>
+
+                        <td class="major">
+                          <div class="one">
+                            <p id="head">Confirmed</p>
+                            <p>{{latestUpdate?.confirmed.value}}</p>
+                          </div>
+                          <div class="two">
+                            <p id="head">Recovered</p>
+                            <p>{{latestUpdate?.recovered.value}}</p>
+                          </div>
+                          <div class="three">
+                            <p id="head">Death</p>
+                            <p>{{latestUpdate?.deaths.value}}</p>
+                          </div>
+                        </td>
+
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <app-table-list (onCountrySelected)="emitCountry($event)"></app-table-list>
+        </div>
+      </div>
+
+      <!-- Plot -->
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card card-chart">
+            <div class="card-header ">
+              <bar-chart [History]="worldHistory" [PlottingData]="InfectedHistory" [plotType]="'bar'"
+                [plotLabels]="'Infected Histogram'" [color]="'orange'"></bar-chart>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">
+                Infected people history
+              </h4>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card card-chart">
+            <div class="card-header ">
+              <bar-chart [History]="worldHistory" [PlottingData]="DeathHistory" [plotType]="'bar'"
+                [plotLabels]="'Death Histogram'" [color]="'red'"></bar-chart>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">
+                Deaths history
+              </h4>
+              <!-- <p class="card-category">Last Campaign Performance</p> -->
+            </div>
+            <!-- <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> campaign sent 2 days
+                ago
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-chart">
+            <div class="card-header ">
+              <line-chart [History]="worldHistory" [InfectedHistory]="InfectedHistory" [DeathHistory]="DeathHistory"
+                [plotType]="'line'"></line-chart>
+
+              <!-- <div class="ct-chart" id="completedTasksChart"></div> -->
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">
+                Comparison between Infected/ Recovered people
+              </h4>
+            </div>
+            <!-- <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> campaign sent 2 days
+                ago
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ng-template>

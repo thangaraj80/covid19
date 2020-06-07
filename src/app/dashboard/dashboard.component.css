@@ -1,0 +1,18 @@
+.major {
+    width:100%;
+ 
+    display:table;
+}
+   
+
+#head {
+    font-weight:bold;
+    text-align:center;
+
+}
+.major div { 
+    display:table-cell;
+    vertical-align:top;
+    text-align:center;
+   
+}

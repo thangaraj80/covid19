@@ -1,0 +1,16 @@
+<div class="card" style="height: 480px;">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">Country Stats</h4>
+        <p class="card-category">Last updated {{ lastUpdate | date }}</p>
+
+    </div>
+    <div class="card-body table-responsive  ">
+        <input type="text" value="" class="form-control" placeholder="Search..." (keyup)="updateFilter($event)">
+        <ngx-datatable #cotable class="bootstrap" [columnMode]="'force'" [headerHeight]="20" [footerHeight]="50"
+            rowHeight="auto" [rows]="rows" [columns]="columns" [limit]="5" [selected]="selected"
+            [selectionType]="SelectionType.single" (select)="onSelect($event)">
+        </ngx-datatable>
+    </div>
+
+
+</div>
