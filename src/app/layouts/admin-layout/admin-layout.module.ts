@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 import { DashboardComponent } from "../../dashboard/dashboard.component";
+import { IndiaComponent } from "../../india/dashboard.component";
 import { TableListComponent } from "../../table-list/table-list.component";
 import { MapsComponent } from "../../maps/maps.component";
 import { MatButtonModule } from "@angular/material/button";
@@ -16,7 +17,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { CoronaModule } from "app/corona/corona.module";
-import { IndiaModule } from "app/india/india.module";
+
 import { VectorMapsComponent } from "app/vectormaps/vectormaps.component";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
@@ -27,6 +28,8 @@ import { LineBarChartComponent } from '../../shared/component/line-bar-chart/lin
 
 import { SpinnerComponent } from 'app/spinner/spinner.component';
 import { PieChartComponent } from 'app/shared/component/pie-chart/pie-chart.component';
+import { SearchPipe } from "../../india/serach.pipe";
+import { DistrictPipe } from "../../india/district.pipe";
 
 
 @NgModule({
@@ -47,19 +50,23 @@ import { PieChartComponent } from 'app/shared/component/pie-chart/pie-chart.comp
     MatSortModule,
     PlottingModule,
     CoronaModule,
-    IndiaModule,
+   
     NgxDatatableModule,
     HighchartsChartModule
     
    
   ],
-  declarations: [DashboardComponent,
+  declarations: [DashboardComponent, IndiaComponent,
     TableListComponent,
     MapsComponent,
     VectorMapsComponent,
     SpinnerComponent,
     LineBarChartComponent,
-    PieChartComponent
-  ]
+    PieChartComponent,
+    SearchPipe,
+    DistrictPipe
+  ], exports: [SpinnerComponent,
+    LineBarChartComponent,
+    PieChartComponent]
 })
 export class AdminLayoutModule {}

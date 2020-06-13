@@ -34,6 +34,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     PlottingModule,
     CommonModule,
+    BrowserModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAL-GQsV9DJoquuWwAeqf6zk9ucDnwUCHA'
     })

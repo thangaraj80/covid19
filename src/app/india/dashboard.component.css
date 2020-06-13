@@ -4,3 +4,6 @@
 .refresh {
     cursor: pointer;
 }
+.table-responsive {
+    max-height:400px;
+}

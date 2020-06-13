@@ -42,7 +42,8 @@ export class IndiaComponent implements OnInit {
 
   source = interval(1000 * 60 * 10);
   subscription: Subscription;
-
+  state;
+  district;
   constructor(
     private _covid: CovidService,
     private router: Router,
@@ -505,4 +506,5 @@ export class IndiaComponent implements OnInit {
   {
     return Math.round((fraction / total) * 10000) / 100
   }
+s
 }
