@@ -6,7 +6,7 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { LineChartComponent } from './line-chart/line-chart.component';
 @NgModule({
   declarations: [BarChartComponent, PieChartComponent, LineChartComponent],
-  imports: [CommonModule, NgxEchartsModule],
+  imports: [NgxEchartsModule],
   exports: [BarChartComponent, PieChartComponent, LineChartComponent]
 })
 export class PlottingModule {}

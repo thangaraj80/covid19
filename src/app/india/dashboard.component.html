@@ -1,0 +1,259 @@
+<app-spinner [isLoading]="isLoading"></app-spinner>
+<div class="main-content">
+    <div class="container-fluid">        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="fa fa-medkit" aria-hidden="true"></i>
+                        </div>
+                        <p class="card-category">Confirmed <br />
+                            <b>{{getPercentage(covid?.confirmed, covid?.confirmed)}}%</b></p>
+                        <h4 class="card-title">{{covid?.confirmed | number:'':'en-IN'}}</h4>
+                        <h4 class="card-title text-danger"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                            {{covid?.deltaconfirmed}}</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> {{covid?.lastupdatedtime}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="fa fa-stethoscope" aria-hidden="true"></i>
+                        </div>
+                        <p class="card-category">Active <br />
+                            <b>{{getPercentage(covid?.confirmed, covid?.active)}}%</b></p>
+                        <h4 class="card-title">{{covid?.active | number:'':'en-IN'}}</h4>
+                        <h4 class="card-title text-info"><i class="fa fa-info" aria-hidden="true"></i>0</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> {{covid?.lastupdatedtime}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+                        </div>
+                        <p class="card-category">Recovered
+                            <br /><b>{{getPercentage(covid?.confirmed, covid?.recovered)}}%</b></p>
+                        <h4 class="card-title">{{covid?.recovered | number:'':'en-IN'}}</h4>
+                        <h4 class="card-title text-success"><i class="fa fa-caret-up"
+                                aria-hidden="true"></i>{{covid?.deltarecovered}}</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> {{covid?.lastupdatedtime}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </div>
+                        <p class="card-category">Deaths <br />
+                            <b>{{getPercentage(covid?.confirmed, covid?.deaths)}}%</b></p>
+                        <h4 class="card-title">{{covid?.deaths | number:'':'en-IN'}}</h4>
+                        <h4 class="card-title text-warning"><i class="fa fa-caret-up"
+                                aria-hidden="true"></i>{{covid?.deltadeaths}}</h4>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">update</i> {{covid?.lastupdatedtime}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <div class="card-header">
+        <h4 class="card-title text-info"><span *ngIf="covid?.state !== 'Total'" class="click" (click)="goBack()"><i
+                    class="fa fa-arrow-circle-o-left"
+                    aria-hidden="true"></i>&nbsp;</span>{{covid?.state === 'Total' ? 'INDIA' : covid?.state}}
+            <span class="pull-right refresh" (click)="loadData(true)"><i class="fa fa-refresh"
+                    aria-hidden="true"></i></span>
+        </h4>
+    </div>
+        <div class="row" *ngIf="!stateName">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">State wise stats
+                            <span class="pull-right"><i class="fa fa-table"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover table-striped" matSort (matSortChange)="sortStatesData($event)">
+                            <tr class="text-warning">
+                                <th mat-sort-header="state">State</th>
+                                <th mat-sort-header="confirmed">Confirmed</th>
+                                <th mat-sort-header="active">Active</th>
+                                <th mat-sort-header="recovered">Recovered</th>
+                                <th mat-sort-header="deaths">Deaths</th>
+                            </tr>
+
+                            <tr *ngFor='let state of sortedStates' (click)="gotoState(state)" class="click">
+                                <td>{{state.state}}</td>
+                                <td>
+                                    <p><span class="text-danger"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                            {{state.deltaconfirmed}} </span>{{state.confirmed | number:'':'en-IN'}}</p>
+                                </td>
+                                <td>{{state.active | number:'':'en-IN'}}</td>
+                                <td>
+                                    <p><span class="text-success"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                            {{state.deltarecovered}} </span>{{state.recovered | number:'':'en-IN'}}</p>
+                                </td>
+                                <td>
+                                    <p><span class="text-info"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                            {{state.deltadeaths}} </span>{{state.deaths | number:'':'en-IN'}}</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="stateName">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">District wise stats
+                            <span class="pull-right"><i class="fa fa-table"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover table-striped" matSort (matSortChange)="sortDistrictsData($event)">
+                            <tr class="text-warning">
+                                <th mat-sort-header="district">District</th>
+                                <th mat-sort-header="confirmed">Confirmed</th>
+                                <th mat-sort-header="active">Active</th>
+                                <th mat-sort-header="recovered">Recovered</th>
+                                <th mat-sort-header="deaths">Deaths</th>
+                            </tr>
+                            <tbody *ngIf="districts">
+                                <tr *ngFor='let district of sortedDistricts'>
+                                    <td
+                                        [ngStyle]="{'border-left':district.confirmed >= 15 ? '3pt solid red' : '3pt solid orange'}">
+                                        <p [ngStyle]="{'color':district.confirmed >= 15 ? 'red' : 'orange'}">
+                                            {{district?.district}}</p>
+                                    </td>
+                                    <td>
+                                        <p><span class="text-danger"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                                {{district?.delta.confirmed}}
+                                            </span>{{district?.confirmed | number:'':'en-IN'}}</p>
+                                    </td>
+                                    <td>
+                                        <p><span class="text-info">
+                                            </span>{{district?.active | number:'':'en-IN'}}</p>
+                                    </td>
+                                    <td>
+                                        <p><span class="text-success"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                                {{district?.delta.recovered}}
+                                            </span>{{district?.recovered | number:'':'en-IN'}}</p>
+                                    </td>
+                                    <td>
+                                        <p><span class="text-warning"><i class="fa fa-caret-up" aria-hidden="true"></i>
+                                                {{district?.delta.deceased}}
+                                            </span>{{district?.deceased | number:'':'en-IN'}}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <div class="row">
+                <div class="col-12">
+                    <mat-slide-toggle class="pull-right" [checked]="isDaily" (change)="onDailyChange($event)" *ngIf="!stateName">
+                        Daily</mat-slide-toggle>
+                    <mat-slide-toggle class="pull-right" [checked]="isUniform" (change)="onUniformChange($event)"
+                        *ngIf="!stateName">Uniform</mat-slide-toggle>
+                    <mat-slide-toggle class="pull-right" [checked]="isUniform" (change)="onGraphChange($event)" *ngIf="stateName">
+                        Bar Graph</mat-slide-toggle>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Confirmed cases graph -->
+                <div class="col-md-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                            <app-line-bar-chart [series]="this.seriesValues?.confirmed.series"
+                                [xAxisCatogories]="seriesValues?.confirmed.xAxisCatogories" [yMinMax]="yMinMax">
+                            </app-line-bar-chart>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Confirmed</h4>
+                            <p class="card-category">
+                                <span class="text-danger">
+                                    <i class="fa fa-long-arrow-up"></i> {{changeConfirmed | number:'':'en-IN'}} </span>
+                                Yesterday's change</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Active cases graph -->
+                <div class="col-md-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-info">
+                            <app-line-bar-chart [series]="this.seriesValues?.active.series"
+                                [xAxisCatogories]="seriesValues?.active.xAxisCatogories" [yMinMax]="yMinMax">
+                            </app-line-bar-chart>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Active</h4>
+                            <p class="card-category">
+                                <span class="text-info">
+                                    <i class="fa fa-long-arrow-up"></i> 0 </span> Yesterday's change</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Recoved cases graph-->
+                <div class="col-md-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                            <app-line-bar-chart [series]="this.seriesValues?.recovered.series"
+                                [xAxisCatogories]="seriesValues?.recovered.xAxisCatogories" [yMinMax]="yMinMax">
+                            </app-line-bar-chart>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Recovered</h4>
+                            <p class="card-category"><span class="text-success">
+                                    <i class="fa fa-long-arrow-up"></i> {{changeRecovered | number:'':'en-IN'}} </span>
+                                Yesterday's change</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Death cases graph-->
+                <div class="col-md-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-warning">
+                            <app-line-bar-chart [series]="this.seriesValues?.death.series"
+                                [xAxisCatogories]="seriesValues?.death.xAxisCatogories" [yMinMax]="yMinMax">
+                            </app-line-bar-chart>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Deaths</h4>
+                            <p class="card-category"><span class="text-warning">
+                                    <i class="fa fa-long-arrow-up"></i> {{changeDeath | number:'':'en-IN'}} </span>
+                                Yesterday's change</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>

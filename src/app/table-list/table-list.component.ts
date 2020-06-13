@@ -20,6 +20,7 @@ export class TableListComponent implements OnInit {
   lastUpdate: Date;
   temp: any;
   selected = [];
+  hideNow: boolean = true;
 
   @ViewChild('firstTable') cotable: DatatableComponent;
   @Output() onCountrySelected: EventEmitter<any> = new EventEmitter<any>();

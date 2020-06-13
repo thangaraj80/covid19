@@ -13,14 +13,27 @@ import { MatRippleModule } from "@angular/material/core";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSelectModule } from "@angular/material/select";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSortModule } from '@angular/material/sort';
 import { CoronaModule } from "app/corona/corona.module";
+import { IndiaModule } from "app/india/india.module";
 import { VectorMapsComponent } from "app/vectormaps/vectormaps.component";
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
+
+import { HighchartsChartModule } from 'highcharts-angular';
+import { LineBarChartComponent } from '../../shared/component/line-bar-chart/line-bar-chart.component';
+
+import { SpinnerComponent } from 'app/spinner/spinner.component';
+import { PieChartComponent } from 'app/shared/component/pie-chart/pie-chart.component';
+
+
 @NgModule({
   imports: [
+    
     CommonModule,
+   
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
@@ -30,10 +43,23 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatSlideToggleModule,
+    MatSortModule,
     PlottingModule,
     CoronaModule,
-    NgxDatatableModule
+    IndiaModule,
+    NgxDatatableModule,
+    HighchartsChartModule
+    
+   
   ],
-  declarations: [DashboardComponent, TableListComponent, MapsComponent, VectorMapsComponent]
+  declarations: [DashboardComponent,
+    TableListComponent,
+    MapsComponent,
+    VectorMapsComponent,
+    SpinnerComponent,
+    LineBarChartComponent,
+    PieChartComponent
+  ]
 })
 export class AdminLayoutModule {}
