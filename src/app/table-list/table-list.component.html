@@ -10,7 +10,7 @@
             rowHeight="auto" [rows]="rows" [columns]="columns" [limit]="5" [selected]="selected"
             [selectionType]="SelectionType.single" (select)="onSelect($event)">
 
-            <ngx-datatable-footer>
+            <!-- <ngx-datatable-footer>
                 <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
                     let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset" let-isVisible="isVisible">
                     <div class="page-count" *ngIf="!hideNow">
@@ -19,15 +19,13 @@
                         </span>
                         {{rowCount.toLocaleString()}} {{totalMessage}}
                     </div>
-                    <datatable-pager [pagerLeftArrowIcon]="'datatable-icon-left'" [pagerRightArrowIcon]="'datatable-icon-right'"
-                        [pagerPreviousIcon]="'datatable-icon-prev'" [pagerNextIcon]="'datatable-icon-skip'" [page]="curPage"
-                        [size]="pageSize" [count]="rowCount" [hidden]="!((rowCount / pageSize) > 1)"
-                        (change)="table.onFooterPage($event)">
-                    </datatable-pager>
+                 
                 </ng-template>
-            </ngx-datatable-footer>
+            </ngx-datatable-footer> -->
         </ngx-datatable>
     </div>
 
 
 </div>
+
+<!-- card card-body ngx-datatable ngx-datatable-footer ng-template .page-count -->

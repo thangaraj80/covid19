@@ -40,6 +40,14 @@ export class TableListComponent implements OnInit {
     // change detection 
     // this.rows = [...this.rows];
   }
+  ngAfterViewChecked() {
+    console.log("AppComponent:AfterViewChecked");
+    var $pagecount: any = document.getElementsByClassName('page-count')[0];
+    var $pager: any = document.getElementsByClassName('pager')[0];
+    $pager.style.margin= "0 50px 0 0";
+    $pagecount.style.display ="none"
+    console.log("AppComponent:AfterViewChecked" + $pagecount);
+  }
 
   triggerColumnChangeDetection(): void {
     console.log("test")
