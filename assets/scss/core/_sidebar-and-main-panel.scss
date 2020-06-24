@@ -30,16 +30,29 @@
         background-color: #191919;
     }
     .logo-img{
+        width: 250px;
+        display: block;
+       /*  max-height: 30px;
+        /* margin-left: 13px;
+        margin-right: 25px; */
+
+        img{
+            width: 250px;
+            top: 16px;
+            left:0px;
+            position: absolute;
+        }
+    }
+    .co-img{
         width: 35px;
         display: block;
-        max-height: 30px;
+       /*  max-height: 30px;
         /* margin-left: 13px;
         margin-right: 25px; */
 
         img{
             width: 35px;
-            top: 16px;
-            position: absolute;
+           
         }
     }
     .sidebar-wrapper{
