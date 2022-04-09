@@ -54,7 +54,7 @@
     "jquery": "^3.5.0",
     "jqvmap": "^1.5.1",
     "jvectormap-next": "^3.1.1",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "ngx-echarts": "^4.2.2",
     "ngx-spinner": "^9.0.2",
     "perfect-scrollbar": "1.1.0",
